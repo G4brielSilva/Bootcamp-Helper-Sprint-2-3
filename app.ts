@@ -14,7 +14,13 @@ class NumberList{
         return sum/ct;
     }
 
-    public smallerBiggerAvarage(list: number[]): number[]{
+    private isNumeric(list: any[]): boolean{
+        return list.find((nm: any)=> isNaN(nm));
+    }
+
+    public smallerBiggerAvarage(list: any[]): any{
+        if(this.isNumeric(list)) return "Esta Lista não é Numérica";
+
         let bigger: number= -Infinity;
         let smaller: number = Infinity;
         let count: number=0;
@@ -28,7 +34,9 @@ class NumberList{
         return [smaller, bigger,sum/count];
     }
 
-    public smallerBiggerAvarageF(list: number[]): number[]{
+    public smallerBiggerAvarageF(list: any[]): any{
+        if(this.isNumeric(list)) return "Esta Lista não é Numérica";
+
         const max: number=Math.max.apply(null, list);
         const min: number=Math.min.apply(null, list);
         return [min,max,this.avarage(list)];
@@ -40,5 +48,8 @@ let p1 = new NumberList;
 //Imperativa
 console.log(p1.smallerBiggerAvarage([ 5, 6, 2, 4, 3]));
 
+console.log(p1.smallerBiggerAvarage([5, "b", 6, "a", 2, "c", 4, "d", 3]));
 //Funcional
-console.log(p1.smallerBiggerAvarageF([10,5,2,2,3,8]))
+console.log(p1.smallerBiggerAvarageF([10,5,2,2,3,8]));
+
+console.log(p1.smallerBiggerAvarageF([5, "b", 6, "a", 2, "c", 4, "d", 3]));

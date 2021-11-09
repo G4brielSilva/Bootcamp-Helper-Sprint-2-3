@@ -13,7 +13,12 @@ class NumberList {
         }, 0);
         return sum / ct;
     }
+    isNumeric(list) {
+        return list.find((nm) => isNaN(nm));
+    }
     smallerBiggerAvarage(list) {
+        if (this.isNumeric(list))
+            return "Esta Lista não é Numérica";
         let bigger = -Infinity;
         let smaller = Infinity;
         let count = 0;
@@ -29,6 +34,8 @@ class NumberList {
         return [smaller, bigger, sum / count];
     }
     smallerBiggerAvarageF(list) {
+        if (this.isNumeric(list))
+            return "Esta Lista não é Numérica";
         const max = Math.max.apply(null, list);
         const min = Math.min.apply(null, list);
         return [min, max, this.avarage(list)];
@@ -37,5 +44,7 @@ class NumberList {
 let p1 = new NumberList;
 //Imperativa
 console.log(p1.smallerBiggerAvarage([5, 6, 2, 4, 3]));
+console.log(p1.smallerBiggerAvarage([5, "b", 6, "a", 2, "c", 4, "d", 3]));
 //Funcional
 console.log(p1.smallerBiggerAvarageF([10, 5, 2, 2, 3, 8]));
+console.log(p1.smallerBiggerAvarageF([5, "b", 6, "a", 2, "c", 4, "d", 3]));
