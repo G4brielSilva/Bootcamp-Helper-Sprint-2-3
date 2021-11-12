@@ -5,21 +5,23 @@
 Demonstre essa classe com o paradigma funcional e imperativo */
 
 class NumberList{
-    private avarage(list: number[]): number{
-        let ct: number=0;
-        const sum: number=list.reduce(function(total: number, valor: number){
-            ct++;
-            return valor+total;
-        },0);
-        return sum/ct;
+
+
+
+    private avarage(list: number[]): number {
+        let count: number=0;
+        const sum: number=list.reduce((total: number, valor: number) => {
+            count++;
+            return valor+total},0);
+        return sum/count;
     }
 
     private isNumeric(list: any[]): boolean{
-        return list.find((nm: any)=> isNaN(nm));
+        return list.find((num: any)=> isNaN(num));
     }
 
-    public smallerBiggerAvarage(list: any[]): any{
-        if(this.isNumeric(list)) return "Esta Lista não é Numérica";
+    public smallerBiggerAvarage(list: any[]): number[]{
+        if(this.isNumeric(list)) return [0,0,0];
 
         let bigger: number= -Infinity;
         let smaller: number = Infinity;
@@ -34,8 +36,8 @@ class NumberList{
         return [smaller, bigger,sum/count];
     }
 
-    public smallerBiggerAvarageF(list: any[]): any{
-        if(this.isNumeric(list)) return "Esta Lista não é Numérica";
+    public smallerBiggerAvarageF(list: any[]): number[]{
+        if(this.isNumeric(list)) return [0,0,0];
 
         const max: number=Math.max.apply(null, list);
         const min: number=Math.min.apply(null, list);

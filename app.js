@@ -6,19 +6,19 @@
 Demonstre essa classe com o paradigma funcional e imperativo */
 class NumberList {
     avarage(list) {
-        let ct = 0;
-        const sum = list.reduce(function (total, valor) {
-            ct++;
+        let count = 0;
+        const sum = list.reduce((total, valor) => {
+            count++;
             return valor + total;
         }, 0);
-        return sum / ct;
+        return sum / count;
     }
     isNumeric(list) {
-        return list.find((nm) => isNaN(nm));
+        return list.find((num) => isNaN(num));
     }
     smallerBiggerAvarage(list) {
         if (this.isNumeric(list))
-            return "Esta Lista não é Numérica";
+            return [0, 0, 0];
         let bigger = -Infinity;
         let smaller = Infinity;
         let count = 0;
@@ -35,7 +35,7 @@ class NumberList {
     }
     smallerBiggerAvarageF(list) {
         if (this.isNumeric(list))
-            return "Esta Lista não é Numérica";
+            return [0, 0, 0];
         const max = Math.max.apply(null, list);
         const min = Math.min.apply(null, list);
         return [min, max, this.avarage(list)];
